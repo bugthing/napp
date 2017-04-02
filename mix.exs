@@ -18,16 +18,11 @@ defmodule Napp.Mixfile do
     [extra_applications: [:logger]]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:my_dep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:my_dep, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      { :sqlitex, "~> 1.3" },
+      {:cowboy, "~> 1.1"},
+      {:plug, "~> 1.3"}
+    ]
   end
 end

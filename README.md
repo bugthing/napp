@@ -1,19 +1,7 @@
-# Napp
+Napp
+====
 
-**TODO: Add description**
+Easily spin up a REST API ontop of a Sqlite db file.
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `napp` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [{:napp, "~> 0.1.0"}]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/napp](https://hexdocs.pm/napp).
+**nap** *Sleep lightly or briefly, especially during the day.* a.k.a, **a light rest**
 
