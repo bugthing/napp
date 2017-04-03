@@ -15,14 +15,15 @@ defmodule Napp.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     # Specify extra applications you'll use from Erlang/Elixir
-    [extra_applications: [:logger]]
+    [extra_applications: [:logger],
+     mod: {Napp.Application, []}]
   end
 
   defp deps do
     [
       { :sqlitex, "~> 1.3" },
-      {:cowboy, "~> 1.1"},
-      {:plug, "~> 1.3"}
+      { :cowboy, "~> 1.1" },
+      { :plug, "~> 1.3" }
     ]
   end
 end
