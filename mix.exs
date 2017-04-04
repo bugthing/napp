@@ -23,7 +23,9 @@ defmodule Napp.Mixfile do
     [
       { :sqlitex, "~> 1.3" },
       { :cowboy, "~> 1.1" },
-      { :plug, "~> 1.3" }
+      { :plug, "~> 1.3" },
+      { :remix, "~> 0.0.2" },
+      { :poison, "~> 3.1" }
     ]
   end
 end

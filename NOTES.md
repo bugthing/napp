@@ -68,7 +68,9 @@ Examples of how I intend this REST API to behave
 
     + Body
 
-            [
-              "some_table",
-              "another_table"
-            ]
+            {
+              "tables": [
+                "some_table",
+                "another_table"
+              ]
+            }

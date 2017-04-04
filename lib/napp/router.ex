@@ -16,7 +16,9 @@ defmodule Napp.Router do
   end
 
   get "/" do
-    send_resp(conn, 200, "Hello Fish")
+    conn
+    |> put_resp_content_type("application/json")
+    |> send_resp(200, Poison.encode!(%{tables: ["table1","table2"]}))
   end
 
   match _ do

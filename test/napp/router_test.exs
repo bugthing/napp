@@ -11,9 +11,10 @@ defmodule NappRouterTest do
     # Invoke the plug
     conn = Napp.Router.call(conn, @opts)
 
-    # Assert the response and status
+    # Assert the response, status, headers and body
     assert conn.state == :sent
     assert conn.status == 200
-    assert conn.resp_body == "Hello Fish"
+    assert Enum.member?(conn.resp_headers, {"content-type", "application/json; charset=utf-8"})
+    assert String.contains?(conn.resp_body, ~s("tables":[))
   end
 end
