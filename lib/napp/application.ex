@@ -12,6 +12,7 @@ defmodule Napp.Application do
     children = [
       # Starts a worker by calling: Napp.Router.start_link(arg1, arg2, arg3)
       worker(Napp.Router, [], []),
+      worker(Sqlitex.Server, ['db/example001.db', [name: Sqlitex.Server]], []),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
