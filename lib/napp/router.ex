@@ -16,9 +16,11 @@ defmodule Napp.Router do
   end
 
   get "/" do
+    tables = Napp.SqliteDb.table_names
+
     conn
     |> put_resp_content_type("application/json")
-    |> send_resp(200, Poison.encode!(%{tables: ["table1","table2"]}))
+    |> send_resp(200, Poison.encode!(%{tables: tables}))
   end
 
   match _ do
