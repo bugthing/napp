@@ -4,7 +4,7 @@ defmodule NappRouterTest do
 
   @opts Napp.Router.init([])
 
-  test "returns hello world" do
+  test "get / returns list of table names" do
     # Create a test connection
     conn = conn(:get, "/")
 
@@ -16,5 +16,23 @@ defmodule NappRouterTest do
     assert conn.status == 200
     assert Enum.member?(conn.resp_headers, {"content-type", "application/json; charset=utf-8"})
     assert String.contains?(conn.resp_body, ~s("tables":[))
+  end
+
+  #test "get /not_a_table returns error" do
+  #  conn = conn(:get, "/not_a_table")
+  #  conn = Napp.Router.call(conn, @opts)
+
+  #  assert conn.state == :sent
+  #  assert conn.status == 404
+  #end
+
+  test "get /table_players returns content of table" do
+    conn = conn(:get, "/table_players")
+    conn = Napp.Router.call(conn, @opts)
+
+    assert conn.state == :sent
+    assert conn.status == 200
+    assert Enum.member?(conn.resp_headers, {"content-type", "application/json; charset=utf-8"})
+    assert String.contains?(conn.resp_body, ~s([{"))
   end
 end
