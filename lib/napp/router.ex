@@ -16,22 +16,22 @@ defmodule Napp.Router do
   end
 
   get "/" do
-    tables = Napp.SqliteDb.table_names
-
-    conn
-    |> put_resp_content_type("application/json")
-    |> send_resp(200, Poison.encode!(%{tables: tables}))
+    Napp.DbToWeb.list_tables
+    |> send_db_to_web(conn)
   end
 
   get "/:table_name" do
-    table_contents = Napp.SqliteDb.table_content(table_name)
-
-    conn
-    |> put_resp_content_type("application/json")
-    |> send_resp(200, Poison.encode!(table_contents))
+    Napp.DbToWeb.table_content(table_name)
+    |> send_db_to_web(conn)
   end
 
   match _ do
     send_resp(conn, 404, "Fail Whale")
+  end
+
+  defp send_db_to_web(dbtoweb, conn) do
+    conn 
+    |> put_resp_content_type("application/json")
+    |> send_resp(dbtoweb.status, dbtoweb.json)
   end
 end
