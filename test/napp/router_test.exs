@@ -35,4 +35,14 @@ defmodule NappRouterTest do
     assert Enum.member?(conn.resp_headers, {"content-type", "application/json; charset=utf-8"})
     assert String.contains?(conn.resp_body, ~s([{"))
   end
+
+  test "get /table_players/1 returns content of a table row" do
+    conn = conn(:get, "/table_players/1")
+    conn = Napp.Router.call(conn, @opts)
+
+    assert conn.state == :sent
+    assert conn.status == 200
+    assert Enum.member?(conn.resp_headers, {"content-type", "application/json; charset=utf-8"})
+    assert String.contains?(conn.resp_body, ~s({"))
+  end
 end

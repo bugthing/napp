@@ -6,4 +6,8 @@ defmodule Napp.SqliteDb do
   def table_content(table_name) do
     Sqlitex.Server.query(Sqlitex.Server, "SELECT * FROM #{table_name}")
   end
+
+  def table_content_row(table_name, row_id) do
+    Sqlitex.Server.query(Sqlitex.Server, "SELECT * FROM #{table_name} WHERE _id=#{row_id}")
+  end
 end

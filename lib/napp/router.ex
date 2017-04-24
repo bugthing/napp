@@ -25,6 +25,11 @@ defmodule Napp.Router do
     |> send_db_to_web(conn)
   end
 
+  get "/:table_name/:row_id" do
+    Napp.DbToWeb.table_content_row(table_name, row_id)
+    |> send_db_to_web(conn)
+  end
+
   match _ do
     send_resp(conn, 404, "Fail Whale")
   end

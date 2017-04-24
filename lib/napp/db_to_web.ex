@@ -19,6 +19,19 @@ defmodule Napp.DbToWeb do
     |> handle_json
   end
 
+  def table_content_row(table_name, row_id) do
+    resp = %{status: 500, data: "{}", struct: [], json: ""}
+
+    Napp.SqliteDb.table_content_row(table_name, row_id)
+    |> handle_db_response(resp)
+    |> fn (resp) ->
+      [ row | tail ] = resp.data
+      %{resp | data: Enum.into(row, %{}) }
+    end.() 
+    |> handle_structure
+    |> handle_json
+  end
+
   defp handle_db_response({:ok, body}, resp) do
     %{resp | status: 200, data: body }
   end
