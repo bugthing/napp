@@ -8,6 +8,7 @@ defmodule Napp.SqliteDb do
   end
 
   def table_content_row(table_name, row_id) do
+    # TODO: discover primary key then use that (not just "_id")
     Sqlitex.Server.query(Sqlitex.Server, "SELECT * FROM #{table_name} WHERE _id=#{row_id}")
   end
 end
