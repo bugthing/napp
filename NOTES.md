@@ -38,6 +38,13 @@ Get documentation
     make docs
     ls doc/ examples/
 
+### Code
+
+You can run a static analysis on the code base in the following ways:
+
+    $ mix credo
+    $ mix credo --strict
+    $ mix credo list
 
 Sqlite
 ------
